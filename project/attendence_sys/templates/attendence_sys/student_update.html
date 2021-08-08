@@ -1,0 +1,78 @@
+{% extends 'basic.html' %}
+
+{% block style %}
+<style>
+	.profile-pic{
+		max-width: 200px;
+		max-height:200px;
+		margin: 0 auto;
+		border-radius: 50%;
+	}
+</style>
+{% endblock style %}
+{% block body %}
+<br>
+<br>
+<br>
+ <div class="container">
+ <div class="row">
+        
+        <div class="col-md-6" style="margin-top: 20px;">
+            <div class="card card-body">
+                <center><h3>Update Student Details</h3></center>
+                <form class="form-horizontal" action="{% url 'updateStudentRedirect' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="control-label">Enter Student Registration ID:</label>
+                        <input name="reg_id" type="text" class="form-control" placeholder="Ex: 18341A1234">
+                    </div>
+                    <div class="form-group">
+                        <label for="sel1">Select Branch:</label>
+                        <select name='branch' class="form-control" id="sel1">
+                            <option value="CSE">CSE</option>
+                            <option value="IT">IT</option>
+                            <option value="ECE">ECE</option>
+                            <option value="EEE">EEE</option>
+                            <option value="MECH">MECH</option>
+                            <option value="CHEM">CHEM</option>
+                            <option value="CIVIL">CIVIL</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-block btn-dark">Submit</button>
+                </form>
+            </div>
+        </div>
+        </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-body">
+                
+                    <hr>
+                    <h3 style="text-align: center">Student Profile Pic</h3>
+                    <hr>
+                    <img class="img-responsive profile-pic" src="{{ student.profile_pic.url }}" >
+                </div>
+            </div>
+            <div class="col-md-9">
+                <form action="{% url 'updateStudent' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group" style="visibility: hidden !important;margin-top: -40px;">
+                        <input type="text" class="form-control" value="{{ prev_reg_id }}" name="prev_reg_id">
+                    </div>
+                    {{ form.as_p }}
+                    <input class="btn btn-dark" type="submit" name="Update Information">
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'auth.html' %}
+{% block title %}
+Take Attendance
+{% endblock title %}
+
+{% block nav %}
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="{% block home %}
+          {% endblock home %}"><a href="/">Home</a></li>
+    
+        </ul>
+      </nav><!-- #nav-menu-container -->
+{% endblock nav %}
+{% block content %}
+
+
+
+<p class="font-weight-bolder text-danger">Take Attendence</p>
+{% for message in messages %}
+
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong></strong>{{ message }}
+ <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+<form class=" text-white py-3 px-3" action="{% url 'attendence' %}" method="post">{% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="sel1">Select Branch:</label>
+                        <select name='branch' class="form-control mb-3" id="sel1">
+                            <option value="CSE">CSE</option>
+                            <option value="IT">IT</option>
+                            <option value="ECE">ECE</option>
+                            <option value="EEE">EEE</option>
+                            <option value="MECH">MECH</option>
+                            <option value="CHEM">CHEM</option>
+                            <option value="CIVIL">CIVIL</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sel1">Select Year:</label>
+                        <select name='year' class="form-control mb-3" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sel1">Select Section:</label>
+                        <select name='section' class="form-control mb-3" id="sel1">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sel1">Select Period:</label>
+                        <select name='period' class="form-control mb-3" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="form-control bg-danger text-white">Take Attendence</button>
+                </form>
+     
+{% endblock content %}

@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{% block title %}
+  {% endblock title %}</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js" integrity="sha512-5vwN8yor2fFT9pgPS9p9R7AszYaNn0LkQElTXIsZFCL7ucT8zDCAqlQXDdaqgA1mZP47hdvztBMsIoFxq/FyyQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style2.css' %}" rel="stylesheet">
+{% block style %}
+{% endblock style %}
+ 
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+
+        <a href="/" class="scrollto">FACIAL RECOGNITION </a>
+        {% comment %} <a href="/" class="scrollto"><img src="{% static 'images/logo.jpeg' %}" alt="" title=""></a> {% endcomment %}
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+         
+         
+          
+          <li class="{% block home %}
+          {% endblock home %}"><a href="/">HOME</a></li>
+
+          <li class="{% block Attendance %}
+          {% endblock Attendance %}"><a href="/takeattendance">ATTENDANCE</a></li>
+
+          <li class="{% block Addstudent %}
+          {% endblock Addstudent %}"><a href="/addstudent">ADD </a></li>
+          <li class="{% block SEARCH %}
+          {% endblock SEARCH %}"><a href="/searchattendence">SEARCH</a></li>
+
+          
+
+          
+
+ 
+
+
+       {% if user.is_authenticated %}
+          <li class="buy-tickets"><a href="/">Welcome {{ request.user.faculty }}</a></li>
+          <li class="buy-tickets"><a href="/account">View Profile</a></li>
+          <li class="buy-tickets"><a href="/arkauth/logout/">Logout</a></li>
+          {% else %}
+          <li class="buy-tickets"><a href="/arkauth/signup/">Signin</a></li>
+          {% endif %}
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- End Header -->
+
+
+
+  <main id="main">
+
+
+  {% block body %}
+  {% endblock body %}
+
+{% block script %}{% endblock script %}
+  <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/superfish/superfish.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/hoverIntent/hoverIntent.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+{% extends 'basic.html' %}
+{% block title %}
+ATTENDANCE SYSTEM RECOGNITION
+{% endblock title %}
+{% block style %}
+<style>
+.appBackground {
+ 
+    background-image: url("../static/images/bg1.jpg");
+   position: fixed;
+top: 0;
+width: 100%;
+height: 100%;
+background-size: cover;
+}
+</style>
+{% endblock style %}
+{% block home %}
+menu-active
+{% endblock home %}
+
+{% block body %}
+{% load static %}
+<div>
+
+ <img class="appBackground" src="{% static 'images/bg1.jpg' %}" alt=""> 
+</div>
+  
+   {% endblock body %}
